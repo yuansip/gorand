@@ -43,9 +43,6 @@ func RandomSelectN(pes []ProbabilityElement, n int) []ProbabilityElement {
 		candidateCount--
 		pesNew[index], pesNew[candidateCount] = pesNew[candidateCount], pesNew[index]
 		pesNew = pesNew[:candidateCount]
-		// sort.Slice(pesNew, func(i, j int) bool {
-		// 	return pesNew[i].GetProbability() > pesNew[j].GetProbability()
-		// })
 	}
 	sort.Slice(selections, func(i, j int) bool {
 		return selections[i].GetProbability() > selections[j].GetProbability()
