@@ -43,9 +43,9 @@ func RandomSelectN(pes []ProbabilityElement, n int) []ProbabilityElement {
 		candidateCount--
 		pesNew[index], pesNew[candidateCount] = pesNew[candidateCount], pesNew[index]
 		pesNew = pesNew[:candidateCount]
-		sort.Slice(pesNew, func(i, j int) bool {
-			return pesNew[i].GetProbability() > pesNew[j].GetProbability()
-		})
+		// sort.Slice(pesNew, func(i, j int) bool {
+		// 	return pesNew[i].GetProbability() > pesNew[j].GetProbability()
+		// })
 	}
 	sort.Slice(selections, func(i, j int) bool {
 		return selections[i].GetProbability() > selections[j].GetProbability()
@@ -64,10 +64,10 @@ func RandomSelect(pes []ProbabilityElement) ProbabilityElement {
 
 func randomSelect(pes []ProbabilityElement, totalProbability float64) int {
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
-	f := r.Float64()
+	f := r.Float64() * totalProbability
 	accumulatedProbability := 0.0
 	for i := range pes {
-		accumulatedProbability += pes[i].GetProbability() / totalProbability
+		accumulatedProbability += pes[i].GetProbability()
 		if accumulatedProbability >= f {
 			return i
 		}

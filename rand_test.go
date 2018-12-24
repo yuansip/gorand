@@ -1,14 +1,15 @@
 package gorand
 
 import (
-	"github.com/stretchr/testify/assert"
 	"math/rand"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type Selectable struct {
-	Value int
+	Value       int
 	Probability float64
 }
 
@@ -28,8 +29,8 @@ func TestRandomSelect(t *testing.T) {
 		r := rand.New(rand.NewSource(time.Now().UnixNano()))
 		f := r.Float64()
 		elements = append(elements, Selectable{
-			Value:i,
-			Probability:f,
+			Value:       i,
+			Probability: f,
 		})
 		totalProbability += f
 	}
@@ -47,7 +48,7 @@ func TestRandomSelect(t *testing.T) {
 	}
 
 	for k, v := range mp {
-		assert.InDelta(t, elementMap[k], float64(v) / float64(loopCount), 0.05)
+		assert.InDelta(t, elementMap[k], float64(v)/float64(loopCount), 0.02)
 	}
 }
 
@@ -58,8 +59,8 @@ func doBenchmark(b *testing.B, n int) {
 		r := rand.New(rand.NewSource(time.Now().UnixNano()))
 		f := r.Float64()
 		elements = append(elements, Selectable{
-			Value:i,
-			Probability:f,
+			Value:       i,
+			Probability: f,
 		})
 	}
 
