@@ -11,17 +11,19 @@ $ go get github.com/yuansip/gorand
 ```
 
 ## Benchmarks
+
 ###### Run on Mac mini (i5, 8G, 2014) go version go1.11.4 darwin/amd64
+
 ```go
 go test -bench=. -benchmem ./...
 goos: darwin
 goarch: amd64
 pkg: github.com/yuansip/gorand
-BenchmarkRandomSelect100-4         30000             45667 ns/op            7408 B/op         10 allocs/op
-BenchmarkRandomSelect1000-4         3000            513034 ns/op           22000 B/op         10 allocs/op
-BenchmarkRandomSelect10000-4         200           6619526 ns/op          169466 B/op         10 allocs/op
+BenchmarkRandomSelect100-4         50000             32161 ns/op            7312 B/op          7 allocs/op
+BenchmarkRandomSelect1000-4         5000            339758 ns/op           21904 B/op          7 allocs/op
+BenchmarkRandomSelect10000-4         300           4355937 ns/op          169360 B/op          7 allocs/op
 PASS
-ok      github.com/yuansip/gorand       6.992s
+ok      github.com/yuansip/gorand       6.986s
 
 ```
 
