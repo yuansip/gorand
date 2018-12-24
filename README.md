@@ -1,6 +1,6 @@
 # gorand [![Godoc](https://godoc.org/github.com/yuansip/gorand?status.svg)](https://godoc.org/github.com/yuansip/gorand)
 
-gorand is a Go library for selecting n elements from element slice randomly at one time according to specific element probability distribution
+gorand is a Go library for selecting n elements from element slice randomly at one time. The slice can have a specific element probability distribution
 
 ## Installation
 
@@ -19,11 +19,26 @@ go test -bench=. -benchmem ./...
 goos: darwin
 goarch: amd64
 pkg: github.com/yuansip/gorand
-BenchmarkRandomSelect100-4         50000             32161 ns/op            7312 B/op          7 allocs/op
-BenchmarkRandomSelect1000-4         5000            339758 ns/op           21904 B/op          7 allocs/op
-BenchmarkRandomSelect10000-4         300           4355937 ns/op          169360 B/op          7 allocs/op
+BenchmarkRandomSelect1_100-4                       50000             31984 ns/op            7264 B/op          5 allocs/op
+BenchmarkRandomSelect1_1000-4                       5000            339030 ns/op           21856 B/op          5 allocs/op
+BenchmarkRandomSelect1_10000-4                       300           4351709 ns/op          169312 B/op          5 allocs/op
+BenchmarkRandomSelect50_100-4                       2000            575657 ns/op          270688 B/op         54 allocs/op
+BenchmarkRandomSelect500_1000-4                      200           6707793 ns/op         2704480 B/op        504 allocs/op
+BenchmarkRandomSelect5000_10000-4                     10         256038988 ns/op        27043945 B/op       5004 allocs/op
+BenchmarkRandomSelect99_100-4                       1000           1115691 ns/op          534112 B/op        103 allocs/op
+BenchmarkRandomSelect999_1000-4                      100          12600892 ns/op         5387104 B/op       1003 allocs/op
+BenchmarkRandomSelect9999_10000-4                      5         252467309 ns/op        53918560 B/op      10003 allocs/op
+BenchmarkRandomSelectEvenly1_100-4                200000             10917 ns/op            5376 B/op          1 allocs/op
+BenchmarkRandomSelectEvenly1_1000-4               200000             10926 ns/op            5376 B/op          1 allocs/op
+BenchmarkRandomSelectEvenly1_10000-4              200000             11020 ns/op            5376 B/op          1 allocs/op
+BenchmarkRandomSelectEvenly50_100-4                 3000            551184 ns/op          268800 B/op         50 allocs/op
+BenchmarkRandomSelectEvenly500_1000-4                300           5474139 ns/op         2688000 B/op        500 allocs/op
+BenchmarkRandomSelectEvenly5000_10000-4               20          55147806 ns/op        26880000 B/op       5000 allocs/op
+BenchmarkRandomSelectEvenly99_100-4                 2000           1087750 ns/op          532224 B/op         99 allocs/op
+BenchmarkRandomSelectEvenly999_1000-4                100          10962265 ns/op         5370624 B/op        999 allocs/op
+BenchmarkRandomSelectEvenly9999_10000-4               10         110186931 ns/op        53754624 B/op       9999 allocs/op
 PASS
-ok      github.com/yuansip/gorand       6.986s
+ok      github.com/yuansip/gorand       36.063s
 
 ```
 
