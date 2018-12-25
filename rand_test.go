@@ -107,7 +107,7 @@ func BenchmarkRandomSelect9999_10000(b *testing.B) {
 
 func TestRandomSelectEvenly(t *testing.T) {
 	elementCount := 10
-	elements := make([]interface{}, elementCount)
+	elements := make([]int, elementCount)
 	for i := 0; i < elementCount; i++ {
 		elements[i] = i
 	}
@@ -116,8 +116,8 @@ func TestRandomSelectEvenly(t *testing.T) {
 	mp := make(map[int]int)
 
 	for i := 0; i < loopCount; i++ {
-		selection := RandomSelectEvenly(elements)
-		mp[selection.(int)]++
+		selection := SelectIntEvenly(elements)
+		mp[selection]++
 	}
 
 	expectProbability := float64(1) / float64(elementCount)
@@ -128,14 +128,14 @@ func TestRandomSelectEvenly(t *testing.T) {
 
 func doEvenlyBenchmark(b *testing.B, n, m int) {
 	elementCount := m
-	elements := make([]interface{}, elementCount)
+	elements := make([]int, elementCount)
 	for i := 0; i < elementCount; i++ {
 		elements[i] = i
 	}
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		RandomSelectNEvenly(elements, n)
+		SelectNIntEvenly(elements, n)
 	}
 }
 
