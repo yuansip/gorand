@@ -42,6 +42,52 @@ ok      github.com/yuansip/gorand       36.063s
 
 ```
 
+## Examples
+
+```go
+elements := []int{1,2,3,4,5}
+selection := gorand.SelectIntEvenly(elements)
+selections := gorand.SelectNIntEvenly(elements, 2)
+
+type Selectable struct {
+	Value       int
+	Probability float64
+}
+
+func (s Selectable) GetValue() interface{} {
+	return s.Value
+}
+
+func (s Selectable) GetProbability() float64 {
+	return s.Probability
+}
+elements2 := []ProbabilityElement{
+	Selectable{
+	    Value:1,
+	    Probability:0.2,
+	},
+	Selectable{
+	    Value:2,
+	    Probability:0.1,
+	},
+	Selectable{
+	    Value:3,
+	    Probability:0.3,
+	},
+	Selectable{
+	    Value:4,
+	    Probability:0.3,
+	},
+	Selectable{
+	    Value:5,
+	    Probability:0.1,
+	},
+}
+
+sel := gorand.RandomSelect(elements2)
+sels := gorand.RandomSelectN(elements2, 2)
+```
+
 ## How to Contribute
 
 Make a pull request...
